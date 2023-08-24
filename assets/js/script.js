@@ -47,8 +47,27 @@ const printPhoto = arr => {
 
     const view = elm.querySelector("button");
     view.setAttribute("data-toggle", "modal");
-    view.setAttribute("data-targhet", "#exampleModal");
+    view.setAttribute("data-target", "#exampleModal");
+    view.addEventListener("click", event => printModal(event, elm.id));
   });
+};
+
+const printModal = (event, id) => {
+  const URL = "https://api.pexels.com/v1/photos/";
+  fetch(URL + id, {
+    headers: { authorization },
+  })
+    .then(resp => resp.json())
+    .then(data => {
+      console.log(data);
+      const img = document.querySelector(".modal img");
+      img.src = data.src.original;
+      img.style = "width:100%";
+      img.alt = data.alt;
+      const title = document.querySelector(".modal h5");
+      title.innerText = data.alt;
+    })
+    .catch(err => console.log(err));
 };
 
 const hideCard = (event, id) => document.getElementById(id).parentElement.remove();
