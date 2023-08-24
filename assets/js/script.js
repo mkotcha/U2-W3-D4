@@ -29,6 +29,7 @@ const printPhoto = arr => {
       link.href = "detail.html?id=" + elm.id;
       const img = document.createElement("img");
       img.src = arr[index].src.landscape;
+      img.alt = arr[index].alt;
       img.style = "width:100%";
       link.appendChild(img);
       elm.insertBefore(link, elm.firstChild);
@@ -37,6 +38,7 @@ const printPhoto = arr => {
       link.href = "detail.html?id=" + elm.id;
       const img = elm.querySelector("img");
       img.src = arr[index].src.landscape;
+      img.alt = arr[index].alt;
     }
     const hide = elm.querySelector("button:last-of-type");
     hide.innerText = "Hide";
