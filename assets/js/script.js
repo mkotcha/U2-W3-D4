@@ -49,7 +49,7 @@ const printPhoto = arr => {
   });
 };
 
-const hideCard = (event, id) => document.getElementById(id).remove();
+const hideCard = (event, id) => document.getElementById(id).parentElement.remove();
 
 document
   .querySelector("main > section > div > p > a:first-child ")
